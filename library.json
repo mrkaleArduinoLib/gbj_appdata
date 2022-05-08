@@ -1,0 +1,20 @@
+{
+  "name": "gbj_appdata",
+  "keywords": "application",
+  "description": "Library manages all data items ulitized in a project as a central data hub.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrkaleArduinoLib/gbj_appdata.git"
+  },
+  "version": "1.0.0",
+  "frameworks": "arduino",
+  "platforms": [
+    "atmelavr",
+    "atmelsam",
+    "espressif8266",
+    "espressif32"
+  ],
+  "dependencies": {
+    "mrkaleArduinoLib/gbj_serial_debug": "*"
+  }
+}
