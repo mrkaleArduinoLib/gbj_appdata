@@ -1,12 +1,13 @@
 {
   "name": "gbj_appdata",
-  "keywords": "application",
+  "version": "1.0.0",
   "description": "Library manages all data items ulitized in a project as a central data hub.",
+  "keywords": "application",
   "repository": {
     "type": "git",
     "url": "https://github.com/mrkaleArduinoLib/gbj_appdata.git"
   },
-  "version": "1.0.0",
+  "license": "MIT",
   "frameworks": "arduino",
   "platforms": [
     "atmelavr",
