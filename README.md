@@ -81,7 +81,8 @@ by method `publish`, it initiates the data item with method `init`.
 * **String publish()**: The method returns the stringified data items's current value with method `get`, stores the returned value as recently published one, and marks the item as used with the method `used`.
 * **char *getName()**: The getter returns pointer to buffer with the data item's name.
 * **Datatype getType()**: The getter returns the enumeration literal determining the original data type of the item.
-* **bool isReady()**: The methods evaluates all current flags that have been set by following methods and decides whether the data item is available for publishing or other similar usage.
+* **bool isSet()**: The method decides whether the data item has been set.
+* **bool isReady()**: The method evaluates all current flags that have been set by following methods and decides whether the data item is available for publishing or other similar usage.
 * **void reset([bool force = false])**: The method redefines the data item to unknown on with data type and default value for an unknown data type, but only if the input argument is true or the item is set for one-time usage with method `once`. The input argument is used usually by the item constructor only.
   * **force**: Flag determining that the data item should be reset in either case.
 * **void init()**: It marks the data item that it can be used for publishing because its current value differs from recently published one.

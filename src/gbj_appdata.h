@@ -38,7 +38,7 @@
 class gbj_appdata
 {
 public:
-  const char *VERSION = "GBJ_APPDATA 1.0.0";
+  const char *VERSION = "GBJ_APPDATA 1.1.0";
 
   enum Datatype
   {
@@ -85,9 +85,13 @@ public:
     void hide() { flShow = false; }
     void once() { flOnce = true; }
     void more() { flOnce = false; }
+    bool isSet()
+    {
+      return type != Datatype::TYPE_NONE;
+    }
     bool isReady()
     {
-      return type != Datatype::TYPE_NONE && flShow && (flAlways || flUse);
+      return isSet() && flShow && (flAlways || flUse);
     }
     void setValue(String value)
     {
