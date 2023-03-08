@@ -38,8 +38,6 @@
 class gbj_appdata
 {
 public:
-  const char *VERSION = "GBJ_APPDATA 1.1.0";
-
   enum Datatype
   {
     TYPE_NONE,
@@ -108,52 +106,61 @@ public:
       used();
       return get();
     }
-    void set(bool value)
+    String set(bool value)
     {
       type = Datatype::TYPE_BOOL;
       String newVal = value ? SERIAL_F("true") : SERIAL_F("false");
       setValue(newVal);
+      return get();
     }
-    void set(byte value)
+    String set(byte value)
     {
       type = Datatype::TYPE_BYTE;
       setValue(String(value));
+      return get();
     }
-    void set(int value)
+    String set(int value)
     {
       type = Datatype::TYPE_INT;
       setValue(String(value));
+      return get();
     }
-    void set(long value)
+    String set(long value)
     {
       type = Datatype::TYPE_LONG;
       setValue(String(value));
+      return get();
     }
-    void set(unsigned int value)
+    String set(unsigned int value)
     {
       type = Datatype::TYPE_UINT;
       setValue(String(value));
+      return get();
     }
-    void set(unsigned long value)
+    String set(unsigned long value)
     {
       type = Datatype::TYPE_ULONG;
       setValue(String(value));
+      return get();
     }
-    void set(float value, byte decimals = 4)
+    String set(float value, byte decimals = 4)
     {
       type = Datatype::TYPE_FLOAT;
       String newVal = String(value, decimals);
       setValue(newVal);
+      return get();
     }
-    void set(String value)
+    String set(String value)
     {
       type = Datatype::TYPE_STRING;
       setValue(value);
+      return get();
     }
-    void set(const char *value)
+    String set(const char *value)
     {
       type = Datatype::TYPE_CCHAR;
       setValue(String(value));
+      return get();
     }
   };
 
