@@ -55,55 +55,53 @@ public:
   {
     const char *name;
     Datatype type;
-    String val, valPub;
-    bool flAlways, flUse, flShow, flOnce;
+    String val;
+    bool flAlways, flShow, flOnce, flNew, flPub, flEvent;
     Parameter(const char *key)
       : name(key)
     {
-      reset(true);
-      show();
-      init();
-      change();
+      pubReset(true);
+      flShow = true;
+      flNew = false;
+      flEvent = false;
+      flAlways = false;
     }
     const char *getName() { return name; }
     Datatype getType() { return type; }
-    void reset(bool force = false)
+    void pubInit() { flPub = true; }
+    void pubReset(bool force = false)
     {
       if (flOnce || force)
       {
         type = Datatype::TYPE_NONE;
-        val = valPub = SERIAL_F("n/a");
+        val = SERIAL_F("n/a");
       }
+      flPub = false;
     }
+    bool isPub() { return isSet() && flShow && (flAlways || flPub); }
+    bool isEvent() { return isSet() && flShow && (flAlways || flEvent); }
     void always() { flAlways = true; }
     void change() { flAlways = false; }
-    void init() { flUse = true; }
-    void used() { flUse = false; }
     void show() { flShow = true; }
     void hide() { flShow = false; }
     void once() { flOnce = true; }
     void more() { flOnce = false; }
-    bool isSet()
-    {
-      return type != Datatype::TYPE_NONE;
-    }
-    bool isReady()
-    {
-      return isSet() && flShow && (flAlways || flUse);
-    }
+    bool isSet() { return type != Datatype::TYPE_NONE; }
+    bool isNew() { return flNew; }
     void setValue(String value)
     {
+      flEvent = flPub = flNew = !value.equals(val);
       val = value;
-      if (val != valPub)
-      {
-        init();
-      }
     }
     String get() { return val; }
     String publish()
     {
-      valPub = val;
-      used();
+      flPub = false;
+      return get();
+    }
+    String event()
+    {
+      flEvent = false;
       return get();
     }
     String set(bool value)
