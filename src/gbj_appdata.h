@@ -79,7 +79,7 @@ public:
       flPub = false;
     }
     bool isPub() { return isSet() && flShow && (flAlways || flPub); }
-    bool isEvent() { return isSet() && flShow && (flAlways || flEvent); }
+    bool isEvent() { return isSet() && flShow && flEvent; }
     void always() { flAlways = true; }
     void change() { flAlways = false; }
     void show() { flShow = true; }
