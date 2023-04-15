@@ -67,7 +67,7 @@ The structure with members and member methods as a template of a data item.
     1. TYPE_STRING - String - Stringified data type.
     1. TYPE_CCHAR - const char* - Pointer to an external string buffer
 by method `publish()`, it initiates the data item with method `init()`.
-* **void setValue(String value)**: The method stores the stringified value and if it differs from previously published one.
+* **void setValue(String value)**: The method stores the stringified value. If it differs from currently stored one, i.e., it is new one, it sets flags for publishing and eventing. The method sets flag for a new item in either case.
   * **value**: Stringified value of the data item.
 * **String get()**: The getter returns the stringified data items's current value.
 * **String publish()**: The method returns the stringified data items's current value for publishing in IoT platform with method `get()` and marks the item as published.

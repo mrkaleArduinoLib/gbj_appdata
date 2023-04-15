@@ -90,7 +90,11 @@ public:
     bool isNew() { return flNew; }
     void setValue(String value)
     {
-      flEvent = flPub = flNew = !value.equals(val);
+      flNew = !value.equals(val);
+      if (flNew)
+      {
+        flEvent = flPub = true;
+      }
       val = value;
     }
     String get() { return val; }

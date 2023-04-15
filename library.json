@@ -1,6 +1,6 @@
 {
   "name": "gbj_appdata",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Library manages all data items utilized in a project as a central data hub.",
   "keywords": "application",
   "repository": {
