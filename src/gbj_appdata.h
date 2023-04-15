@@ -56,7 +56,7 @@ public:
     const char *name;
     Datatype type;
     String val;
-    bool flAlways, flShow, flOnce, flNew, flPub, flEvent;
+    bool flAlways, flShow, flNew, flPub, flEvent;
     Parameter(const char *key)
       : name(key)
     {
@@ -71,7 +71,7 @@ public:
     void pubInit() { flPub = true; }
     void pubReset(bool force = false)
     {
-      if (flOnce || force)
+      if (force)
       {
         type = Datatype::TYPE_NONE;
         val = SERIAL_F("n/a");
@@ -84,8 +84,6 @@ public:
     void change() { flAlways = false; }
     void show() { flShow = true; }
     void hide() { flShow = false; }
-    void once() { flOnce = true; }
-    void more() { flOnce = false; }
     bool isSet() { return type != Datatype::TYPE_NONE; }
     bool isNew() { return flNew; }
     void setValue(String value)

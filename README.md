@@ -53,7 +53,7 @@ The structure with members and member methods as a template of a data item.
 
 #### Data item methods
 * **Parameter(const char *key)**: Constructor for a data item.
-  * **key**: The name of a data parameter. It is usually stored in flash memory for reducing operational memory usage and is generally prefixed as label with abbreviation `lbl`, e.g., _lblPeriodPublish_. Data item names are usually defined in include configuration files with names starting with `config_params` either in common or shared location, e.g., _config_params_gen.h_ or specifically in a project.
+  * **key**: The name of a data parameter. It is usually stored in flash memory for reducing operational memory usage and is generally prefixed as label with abbreviation `lbl`, e.g., _lblPeriodPublish_. Data item names are usually defined in include configuration files with names starting with `config_params` either in common or shared location, e.g., _config\_params_gen.h_ or specifically in a project.
 * **void set(_\<datatype\>_ value)**: The overloaded setter for updating a data item, each for particular data type. The method converts value from original data type to String data type and stores the provided value with help of the method `setValue()`. The setter returns updated value by calling its getter.
   * **value**: The new value of the data item. Its valid data types are defined by enumeration `Datatype` and can be:
     1. TYPE_NONE - Unknown data type is set at creating the data item or by method `reset()`, and its string value is `n/a`.
@@ -66,7 +66,6 @@ The structure with members and member methods as a template of a data item.
     1. TYPE_FLOAT - float - Floating point numeric data type.
     1. TYPE_STRING - String - Stringified data type.
     1. TYPE_CCHAR - const char* - Pointer to an external string buffer
-by method `publish()`, it initiates the data item with method `init()`.
 * **void setValue(String value)**: The method stores the stringified value. If it differs from currently stored one, i.e., it is new one, it sets flags for publishing and eventing. The method sets flag for a new item in either case.
   * **value**: Stringified value of the data item.
 * **String get()**: The getter returns the stringified data items's current value.
@@ -78,14 +77,12 @@ by method `publish()`, it initiates the data item with method `init()`.
 * **bool isNew()**: The method determines whether the data item's value differs from currently stored, i.e., whether it is new.
 * **bool isEvent()**: The method decides whether the data item is available for eventing.
 * **bool isPub()**: The method decides whether the data item is available for publishing.
-* **void pubReset([bool force = false])**: The method redefines the data item as unknown, if the input argument is true or the item is set for one-time usage with method `once()`. The input argument is used usually by the item constructor only. Flag `force` determines that the data item should be reset in either case.
+* **void pubReset([bool force = false])**: The method redefines the data item as unknown, if the input argument is true. The input argument is used usually by the item constructor only. Flag `force` determines that the data item should be reset in either case.
 * **void pubInit()**: It marks the data item that it is allowed for publishing.
 * **void always()**: It marks the data item that it should be published regardless of the change of it value.
 * **void change()**: It is counterpart for the previous method and marks the data item that it should be published only after changing its value from recently published one.
 * **void show()**: It marks the data item that it is generally enabled for publishing.
 * **void hide()**: It is counterpart for the previous method and marks the data item that it is generally disabled for publishing. It can be utilized for temporary suppressing the data item for particular conditions.
-* **void once()**: It marks the data item that it is aimed for one-time publishing. A value should be set for the item in order to be published again. It is useful for suppressing publishing unknown (undefined) value right after creating the data item.
-* **void more()**: It is counterpart for the previous method and marks the data item that it is aimed for repeating publishing.
 
 [Back to interface](#interface)
 
