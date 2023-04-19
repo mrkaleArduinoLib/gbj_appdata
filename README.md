@@ -66,7 +66,7 @@ The structure with members and member methods as a template of a data item.
     1. TYPE_FLOAT - float - Floating point numeric data type.
     1. TYPE_STRING - String - Stringified data type.
     1. TYPE_CCHAR - const char* - Pointer to an external string buffer
-* **void setValue(String value)**: The method stores the stringified value. If it differs from currently stored one, i.e., it is new one, it sets flags for publishing and eventing. The method sets flag for a new item in either case.
+* **void setValue(String value)**: The method stores the stringified value. If it differs from currently stored one, i.e., it is new one, it sets flags for publishing and eventing. The method sets flag for a new item in either case. If the item is mark as repeatable by the method `repeat()`, it is marked as new even if the input value has not changed.
   * **value**: Stringified value of the data item.
 * **String get()**: The getter returns the stringified data items's current value.
 * **String publish()**: The method returns the stringified data items's current value for publishing in IoT platform with method `get()` and marks the item as published.
@@ -81,8 +81,9 @@ The structure with members and member methods as a template of a data item.
 * **void pubInit()**: It marks the data item that it is allowed for publishing.
 * **void always()**: It marks the data item that it should be published regardless of the change of it value.
 * **void change()**: It is counterpart for the previous method and marks the data item that it should be published only after changing its value from recently published one.
-* **void show()**: It marks the data item that it is generally enabled for publishing.
+* **void show()**: It marks the data item that it is generally enabled for publishing and/or eventing.
 * **void hide()**: It is counterpart for the previous method and marks the data item that it is generally disabled for publishing. It can be utilized for temporary suppressing the data item for particular conditions.
+* **void repeat()**: It marks the data item that it should be published and/or evented even if its value is not new.
 
 [Back to interface](#interface)
 
