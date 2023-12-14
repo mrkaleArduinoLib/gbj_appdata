@@ -79,11 +79,11 @@ The structure with members and member methods as a template of a data item.
 * **bool isPub()**: The method decides whether the data item is available for publishing.
 * **void pubReset([bool force = false])**: The method redefines the data item as unknown, if the input argument is true. The input argument is used usually by the item constructor only. Flag `force` determines that the data item should be reset in either case.
 * **void pubInit()**: It marks the data item that it is allowed for publishing.
-* **void always()**: It marks the data item that it should be published regardless of the change of it value.
+* **void always()**: It marks the data item that it should be published regardless of the change of its value.
 * **void change()**: It is counterpart for the previous method and marks the data item that it should be published only after changing its value from recently published one.
 * **void show()**: It marks the data item that it is generally enabled for publishing and/or eventing.
 * **void hide()**: It is counterpart for the previous method and marks the data item that it is generally disabled for publishing. It can be utilized for temporary suppressing the data item for particular conditions.
-* **void repeat()**: It marks the data item that it should be published and/or evented even if its value is not new.
+* **void repeat()**: It marks the data item that it is prepared for publishing and/or eventing even if its value is not new.
 
 [Back to interface](#interface)
 
