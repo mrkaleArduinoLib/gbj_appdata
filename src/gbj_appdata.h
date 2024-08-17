@@ -144,7 +144,7 @@ public:
       setValue(String(value));
       return get();
     }
-    String set(float value, byte decimals = 4)
+    String set(float value, unsigned int decimals = 4)
     {
       type = Datatype::TYPE_FLOAT;
       String newVal = String(value, decimals);

@@ -54,7 +54,7 @@ The structure with members and member methods as a template of a data item.
 #### Data item methods
 * **Parameter(const char *key)**: Constructor for a data item.
   * **key**: The name of a data parameter. It is usually stored in flash memory for reducing operational memory usage and is generally prefixed as label with abbreviation `lbl`, e.g., _lblPeriodPublish_. Data item names are usually defined in include configuration files with names starting with `config_params` either in common or shared location, e.g., _config\_params_gen.h_ or specifically in a project.
-* **void set(_\<datatype\>_ value)**: The overloaded setter for updating a data item, each for particular data type. The method converts value from original data type to String data type and stores the provided value with help of the method `setValue()`. The setter returns updated value by calling its getter.
+* **void set(_\<datatype\>_ value, _[unsigned int decimal]_)**: The overloaded setter for updating a data item, each for particular data type. Two parameters are used just at float values. The method converts value from original data type to String data type and stores the provided value with help of the method `setValue()`. The setter returns updated value by calling its getter.
   * **value**: The new value of the data item. Its valid data types are defined by enumeration `Datatype` and can be:
     1. TYPE_NONE - Unknown data type is set at creating the data item or by method `reset()`, and its string value is `n/a`.
     1. TYPE_BOOL - bool - Boolean data type with string values `true` and `false`.
