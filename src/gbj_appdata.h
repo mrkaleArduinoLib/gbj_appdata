@@ -19,16 +19,14 @@
 
 #if defined(__AVR__)
   #include <Arduino.h>
-  // #include <avr/pgmspace.h>
+  #include <avr/pgmspace.h>
   #include <inttypes.h>
 #elif defined(ESP8266)
   #include <Arduino.h>
-  // #include <pgmspace.h>
+  #include <pgmspace.h>
 #elif defined(ESP32)
   #include <Arduino.h>
-  // #include <pgmspace.h>
-#elif defined(PARTICLE)
-  #include <Particle.h>
+  #include <pgmspace.h>
 #endif
 #include "gbj_serial_debug.h"
 
@@ -169,8 +167,7 @@ public:
     Constructor.
 
     DESCRIPTION:
-    Constructor creates the class instance object and sets credentials for
-    IoT platform.
+    Constructor creates the class instance object.
 
     PARAMETERS: None
 
@@ -180,7 +177,7 @@ public:
 
   // Buffer for reading values stored in flash memory.
   // Length should be adjusted for the longest parameter name.
-  char progmemBuffer[20];
+  char progmemBuffer[30];
   inline const char *getPrmName(const char *progmemPrmName)
   {
     strcpy_P(progmemBuffer, progmemPrmName);
