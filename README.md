@@ -83,7 +83,6 @@ The structure with members and member methods as a template of a data item.
 * **void change()**: It is counterpart for the previous method and marks the data item that it should be published only after changing its value from recently published one.
 * **void show()**: It marks the data item that it is generally enabled for publishing and/or eventing.
 * **void hide()**: It is counterpart for the previous method and marks the data item that it is generally disabled for publishing. It can be utilized for temporary suppressing the data item for particular conditions.
-* **void repeat()**: It marks the data item that it is prepared for publishing and/or eventing even if its value is not new.
 
 [Back to interface](#interface)
 
