@@ -71,8 +71,8 @@ public:
     {
       if (force)
       {
+        set();
         type = Datatype::TYPE_NONE;
-        val = SERIAL_F("n/a");
       }
       flPub = false;
     }
@@ -160,6 +160,7 @@ public:
       setValue(String(value));
       return get();
     }
+    String set(void) { return set("n.a."); }
   };
 
   /*
