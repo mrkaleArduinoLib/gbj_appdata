@@ -69,6 +69,7 @@ The structure with members and member methods as a template of a data item.
 * **void setValue(String value)**: The method stores the stringified value. If it differs from currently stored one, i.e., it is new one, it sets flags for publishing and eventing. The method sets flag for a new item in either case. If the item is mark as repeatable by the method `repeat()`, it is marked as new even if the input value has not changed.
   * **value**: Stringified value of the data item.
 * **String get()**: The getter returns the stringified data items's current value.
+* **bool getBool()**: The getter returns the data items's current value converted to boolean value.
 * **String publish()**: The method returns the stringified data items's current value for publishing in IoT platform with method `get()` and marks the item as published.
 * **String publish()**: The method returns the stringified data items's current value for eventing in webservers with method `get()` and marks the item as evented.
 * **char *getName()**: The getter returns pointer to buffer with the data item's name.

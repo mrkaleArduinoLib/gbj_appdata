@@ -94,6 +94,7 @@ public:
       val = value;
     }
     String get() { return val; }
+    bool getBool() { return val.equals(SERIAL_F("true")); }
     String publish()
     {
       flPub = false;
