@@ -105,6 +105,11 @@ public:
       flEvent = false;
       return get();
     }
+    bool eventBool()
+    {
+      flEvent = false;
+      return getBool();
+    }
     String set(bool value)
     {
       type = Datatype::TYPE_BOOL;

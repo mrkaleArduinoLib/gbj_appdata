@@ -70,13 +70,15 @@ The structure with members and member methods as a template of a data item.
   * **value**: Stringified value of the data item.
 * **String get()**: The getter returns the stringified data items's current value.
 * **bool getBool()**: The getter returns the data items's current value converted to boolean value.
+* **String event()**: The getter resets event flag and fires the `get()` method.
+* **bool eventBool()**: The getter resets event flag and fires the `getBool()` method.
 * **String publish()**: The method returns the stringified data items's current value for publishing in IoT platform with method `get()` and marks the item as published.
 * **String publish()**: The method returns the stringified data items's current value for eventing in webservers with method `get()` and marks the item as evented.
 * **char *getName()**: The getter returns pointer to buffer with the data item's name.
 * **Datatype getType()**: The getter returns the enumeration literal determining the original data type of the item.
 * **bool isSet()**: The method decides whether the data item has been set.
 * **bool isNew()**: The method determines whether the data item's value differs from currently stored, i.e., whether it is new.
-* **bool isEvent()**: The method decides whether the data item is available for eventing.
+* **bool isEvent()**: The method decides whether the data item is available for eventing from value of event flag.
 * **bool isPub()**: The method decides whether the data item is available for publishing.
 * **void pubReset([bool force = false])**: The method redefines the data item as unknown, if the input argument is true. The input argument is used usually by the item constructor only. Flag `force` determines that the data item should be reset in either case.
 * **void pubInit()**: It marks the data item that it is allowed for publishing.
