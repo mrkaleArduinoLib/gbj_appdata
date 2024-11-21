@@ -54,9 +54,9 @@ The structure with members and member methods as a template of a data item.
 #### Data item methods
 * **Parameter(const char *key)**: Constructor for a data item.
   * **key**: The name of a data parameter. It is usually stored in flash memory for reducing operational memory usage and is generally prefixed as label with abbreviation `lbl`, e.g., _lblPeriodPublish_. Data item names are usually defined in include configuration files with names starting with `config_params` either in common or shared location, e.g., _config\_params_gen.h_ or specifically in a project.
-* **void set(_\<datatype\>_ value, _[unsigned int decimal]_)**: The overloaded setter for updating a data item, each for particular data type. Two parameters are used just at float values. The method converts value from original data type to String data type and stores the provided value with help of the method `setValue()`. The setter returns updated value by calling its getter.
+* **void set([_\<datatype\>_ value, _[unsigned int decimal]_])**: The overloaded setter for updating a data item, each for particular data type. Two parameters are used just at float values. The method converts value from original data type to String data type and stores the provided value with help of the method `setValue()`. The setter returns updated value by calling its getter. At no input arguments the method implicitly store the textual value `n.a.`.
   * **value**: The new value of the data item. Its valid data types are defined by enumeration `Datatype` and can be:
-    1. TYPE_NONE - Unknown data type is set at creating the data item or by method `reset()`, and its string value is `n/a`.
+    1. TYPE_NONE - Unknown data type is set at creating the data item or by method `reset()`, and its value is stored by method `set()`.
     1. TYPE_BOOL - bool - Boolean data type with string values `true` and `false`.
     1. TYPE_BYTE - byte - Unsigned one character integer (8-bit) data type.
     1. TYPE_INT - int - Signed integer (16-bit) data type.
@@ -68,6 +68,7 @@ The structure with members and member methods as a template of a data item.
     1. TYPE_CCHAR - const char* - Pointer to an external string buffer
 * **void setValue(String value)**: The method stores the stringified value. If it differs from currently stored one, i.e., it is new one, it sets flags for publishing and eventing. The method sets flag for a new item in either case. If the item is mark as repeatable by the method `repeat()`, it is marked as new even if the input value has not changed.
   * **value**: Stringified value of the data item.
+* **void reset()**: The method initializes the data item in it was at its creation. It calls method `set()`, so that the value of it is `n.a.` and type unknown.
 * **String get()**: The getter returns the stringified data items's current value.
 * **bool getBool()**: The getter returns the data items's current value converted to boolean value.
 * **String event()**: The getter resets event flag and fires the `get()` method.
@@ -80,7 +81,7 @@ The structure with members and member methods as a template of a data item.
 * **bool isNew()**: The method determines whether the data item's value differs from currently stored, i.e., whether it is new.
 * **bool isEvent()**: The method decides whether the data item is available for eventing from value of event flag.
 * **bool isPub()**: The method decides whether the data item is available for publishing.
-* **void pubReset([bool force = false])**: The method redefines the data item as unknown, if the input argument is true. The input argument is used usually by the item constructor only. Flag `force` determines that the data item should be reset in either case.
+* **void pubReset([bool force = false])**: The method redefines the data item as published, i.e., it is suppressed farther publishing without setting a value. If the input argument is true, the data item is reset by method `reset()` as well.
 * **void pubInit()**: It marks the data item that it is allowed for publishing.
 * **void always()**: It marks the data item that it should be published regardless of the change of its value.
 * **void change()**: It is counterpart for the previous method and marks the data item that it should be published only after changing its value from recently published one.

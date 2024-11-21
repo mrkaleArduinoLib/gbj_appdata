@@ -58,21 +58,25 @@ public:
     Parameter(const char *key)
       : name(key)
     {
-      pubReset(true);
+      reset();
+    }
+    const char *getName() { return name; }
+    Datatype getType() { return type; }
+    void reset() {
+      set();
+      type = Datatype::TYPE_NONE;
+      flPub = false;
       flShow = true;
       flNew = false;
       flEvent = false;
       flAlways = false;
     }
-    const char *getName() { return name; }
-    Datatype getType() { return type; }
     void pubInit() { flPub = true; }
     void pubReset(bool force = false)
     {
       if (force)
       {
-        set();
-        type = Datatype::TYPE_NONE;
+        reset();
       }
       flPub = false;
     }
