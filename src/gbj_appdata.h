@@ -62,7 +62,8 @@ public:
     }
     const char *getName() { return name; }
     Datatype getType() { return type; }
-    void reset() {
+    void reset()
+    {
       set();
       type = Datatype::TYPE_NONE;
       flPub = false;
@@ -72,15 +73,8 @@ public:
       flAlways = false;
     }
     void pubInit() { flPub = true; }
-    void pubReset(bool force = false)
-    {
-      if (force)
-      {
-        reset();
-      }
-      flPub = false;
-    }
-    bool isPub() { return isSet() && flShow && (flAlways || flPub); }
+    void pubReset() { flPub = false; }
+    bool isPub() { return isSet() && flShow && flPub; }
     bool isEvent() { return isSet() && flShow && flEvent; }
     void always() { flAlways = true; }
     void change() { flAlways = false; }

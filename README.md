@@ -66,7 +66,7 @@ The structure with members and member methods as a template of a data item.
     1. TYPE_FLOAT - float - Floating point numeric data type.
     1. TYPE_STRING - String - Stringified data type.
     1. TYPE_CCHAR - const char* - Pointer to an external string buffer
-* **void setValue(String value)**: The method stores the stringified value. If it differs from currently stored one, i.e., it is new one, it sets flags for publishing and eventing. The method sets flag for a new item in either case. If the item is mark as repeatable by the method `repeat()`, it is marked as new even if the input value has not changed.
+* **void setValue(String value)**: The method stores the stringified value. If it differs from currently stored one, i.e., it is new one, it sets flags for publishing and eventing. The method sets flag for a new item in either case. If the item is mark as repeatable by the method `always()`, it is marked as new even if the input value has not changed.
   * **value**: Stringified value of the data item.
 * **void reset()**: The method initializes the data item in it was at its creation. It calls method `set()`, so that the value of it is `n.a.` and type unknown.
 * **String get()**: The getter returns the stringified data items's current value.
@@ -79,11 +79,11 @@ The structure with members and member methods as a template of a data item.
 * **Datatype getType()**: The getter returns the enumeration literal determining the original data type of the item.
 * **bool isSet()**: The method decides whether the data item has been set.
 * **bool isNew()**: The method determines whether the data item's value differs from currently stored, i.e., whether it is new.
-* **bool isEvent()**: The method decides whether the data item is available for eventing from value of event flag.
+* **bool isEvent()**: The method decides whether the data item is available for eventing.
 * **bool isPub()**: The method decides whether the data item is available for publishing.
-* **void pubReset([bool force = false])**: The method redefines the data item as published, i.e., it is suppressed farther publishing without setting a value. If the input argument is true, the data item is reset by method `reset()` as well.
+* **void pubReset()**: It marks the data item as published, i.e., publishing is suppressed without setting a value.
 * **void pubInit()**: It marks the data item that it is allowed for publishing.
-* **void always()**: It marks the data item that it should be published regardless of the change of its value.
+* **void always()**: It marks the data item as new in the method `setValue()` even if the input value has not changed.
 * **void change()**: It is counterpart for the previous method and marks the data item that it should be published only after changing its value from recently published one.
 * **void show()**: It marks the data item that it is generally enabled for publishing and/or eventing.
 * **void hide()**: It is counterpart for the previous method and marks the data item that it is generally disabled for publishing. It can be utilized for temporary suppressing the data item for particular conditions.
