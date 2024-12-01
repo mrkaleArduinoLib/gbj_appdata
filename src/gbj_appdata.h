@@ -54,6 +54,7 @@ public:
     const char *name;
     Datatype type;
     String val;
+    unsigned long tsPubInit;
     bool flAlways, flShow, flNew, flPub, flEvent;
     Parameter(const char *key)
       : name(key)
@@ -71,8 +72,13 @@ public:
       flNew = false;
       flEvent = false;
       flAlways = false;
+      tsPubInit = 0;
     }
-    void pubInit() { flPub = true; }
+    void pubInit()
+    {
+      tsPubInit = millis();
+      flPub = true;
+    }
     void pubReset() { flPub = false; }
     bool isPub() { return isSet() && flShow && flPub; }
     bool isEvent() { return isSet() && flShow && flEvent; }
@@ -93,6 +99,7 @@ public:
     }
     String get() { return val; }
     bool getBool() { return val.equals(SERIAL_F("true")); }
+    unsigned long getPubIniMs() { return tsPubInit; }
     String publish()
     {
       flPub = false;

@@ -71,18 +71,19 @@ The structure with members and member methods as a template of a data item.
 * **void reset()**: The method initializes the data item in it was at its creation. It calls method `set()`, so that the value of it is `n.a.` and type unknown.
 * **String get()**: The getter returns the stringified data items's current value.
 * **bool getBool()**: The getter returns the data items's current value converted to boolean value.
+* **char *getName()**: The getter returns pointer to buffer with the data item's name.
+* **Datatype getType()**: The getter returns the enumeration literal determining the original data type of the item.
+* **unsigned long getPubIniMs()**: The getter returns the timestamp in milliseconds of the recent initialization of the item by the method `pubInit()`.
 * **String event()**: The getter resets event flag and fires the `get()` method.
 * **bool eventBool()**: The getter resets event flag and fires the `getBool()` method.
 * **String publish()**: The method returns the stringified data items's current value for publishing in IoT platform with method `get()` and marks the item as published.
 * **String publish()**: The method returns the stringified data items's current value for eventing in webservers with method `get()` and marks the item as evented.
-* **char *getName()**: The getter returns pointer to buffer with the data item's name.
-* **Datatype getType()**: The getter returns the enumeration literal determining the original data type of the item.
 * **bool isSet()**: The method decides whether the data item has been set.
 * **bool isNew()**: The method determines whether the data item's value differs from currently stored, i.e., whether it is new.
 * **bool isEvent()**: The method decides whether the data item is available for eventing.
 * **bool isPub()**: The method decides whether the data item is available for publishing.
 * **void pubReset()**: It marks the data item as published, i.e., publishing is suppressed without setting a value.
-* **void pubInit()**: It marks the data item that it is allowed for publishing.
+* **void pubInit()**: It marks the data item as it is allowed for publishing and registers the timestamp of the initiation, which can be obtained by the method `getPubIniMs()`. The timestamp is utilized by retry at publishing failure.
 * **void always()**: It marks the data item as new in the method `setValue()` even if the input value has not changed.
 * **void change()**: It is counterpart for the previous method and marks the data item that it should be published only after changing its value from recently published one.
 * **void show()**: It marks the data item that it is generally enabled for publishing and/or eventing.
