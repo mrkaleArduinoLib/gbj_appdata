@@ -76,8 +76,8 @@ public:
     }
     void pubInit()
     {
-      tsPubInit = millis();
       flPub = true;
+      tsPubInit = millis();
     }
     void pubReset() { flPub = false; }
     bool isPub() { return isSet() && flShow && flPub; }
@@ -103,6 +103,7 @@ public:
     String publish()
     {
       flPub = false;
+      tsPubInit = 0;
       return get();
     }
     String event()
