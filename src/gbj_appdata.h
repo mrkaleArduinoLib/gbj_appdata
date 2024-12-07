@@ -56,6 +56,7 @@ public:
     String val;
     unsigned long tsPubInit;
     bool flAlways, flShow, flNew, flPub, flEvent;
+    byte pubErrs;
     Parameter(const char *key)
       : name(key)
     {
@@ -80,6 +81,8 @@ public:
       tsPubInit = millis();
     }
     void pubReset() { flPub = false; }
+    void pubErrInc() { pubErrs++; }
+    void pubErrIni() { pubErrs = 0; }
     bool isPub() { return isSet() && flShow && flPub; }
     bool isEvent() { return isSet() && flShow && flEvent; }
     void always() { flAlways = true; }
@@ -100,6 +103,7 @@ public:
     String get() { return val; }
     bool getBool() { return val.equals(SERIAL_F("true")); }
     unsigned long getPubIniMs() { return tsPubInit; }
+    byte getPubErrs() { return pubErrs; }
     String publish()
     {
       flPub = false;
